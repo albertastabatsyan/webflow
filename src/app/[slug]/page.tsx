@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { articles, getArticle } from "@/lib/articles";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export function generateStaticParams() {
   return articles.filter((a) => a.published).map((a) => ({ slug: a.slug }));
@@ -52,12 +54,14 @@ export default async function ArticlePage({
 
   return (
     <div>
-      {/* Back nav */}
-      <nav
+      <Header />
+
+      {/* Back link */}
+      <div
         style={{
           maxWidth: 800,
           margin: "0 auto",
-          padding: "24px 32px",
+          padding: "16px 32px",
         }}
       >
         <Link
@@ -70,14 +74,13 @@ export default async function ArticlePage({
             fontSize: 13,
             fontWeight: 500,
             letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-secondary)",
+            color: "#797e86",
             textDecoration: "none",
           }}
         >
-          ← SYNTHFLOW LABS
+          ← Back to all research
         </Link>
-      </nav>
+      </div>
 
       {/* Article header */}
       <section style={{ background: "var(--white)" }}>
@@ -379,6 +382,8 @@ export default async function ArticlePage({
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

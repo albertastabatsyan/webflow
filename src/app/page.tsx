@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { articles, categories } from "@/lib/articles";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function LabsIndex() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -14,74 +16,7 @@ export default function LabsIndex() {
 
   return (
     <div>
-      {/* Nav */}
-      <nav
-        style={{
-          maxWidth: 1120,
-          margin: "0 auto",
-          padding: "24px 32px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              color: "var(--text-secondary)",
-              fontFeatureSettings: "'dlig' 1",
-            }}
-          >
-            Synthflow
-          </span>
-          <span
-            style={{
-              width: 1,
-              height: 16,
-              background: "var(--border)",
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              color: "var(--navy-dark)",
-              fontFeatureSettings: "'dlig' 1",
-            }}
-          >
-            Labs
-          </span>
-        </div>
-        <a
-          href="https://synthflow.ai"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 15,
-            fontWeight: 500,
-            textDecoration: "none",
-            fontFeatureSettings: "'dlig' 1",
-            letterSpacing: "-0.3px",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 4,
-            background: "var(--navy-dark)",
-            color: "var(--white)",
-            padding: "8px 12px",
-            borderRadius: 4,
-            minWidth: 64,
-          }}
-        >
-          synthflow.ai <span style={{ marginLeft: 2 }}>→</span>
-        </a>
-      </nav>
+      <Header />
 
       {/* Hero */}
       <section
@@ -426,52 +361,7 @@ export default function LabsIndex() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: "1px solid var(--border)",
-          padding: "32px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1120,
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              color: "var(--text-secondary)",
-            }}
-          >
-            SYNTHFLOW LABS
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-body)",
-              fontFeatureSettings: "'dlig' 1",
-              fontSize: 14,
-              color: "var(--text-secondary)",
-            }}
-          >
-            Part of{" "}
-            <a
-              href="https://synthflow.ai"
-              style={{ color: "var(--navy-dark)", textDecoration: "none" }}
-            >
-              Synthflow AI
-            </a>
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
