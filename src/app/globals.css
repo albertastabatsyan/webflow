@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-mono/style.css");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --navy-dark: #1F293A;
-  --navy-deep: #0F172A;
+  --navy-dark: #1A1A2E;
+  --navy-deep: #0D0D17;
   --light-bg: #F8FAFC;
   --white: #ffffff;
   --border: #E3E8F0;
   --text-secondary: #66748A;
   --text-label: #4E5B6F;
-  --accent: #8639ff;
+  --accent: #1A1A2E;
   --text-light: #F8FAFC;
   --text-light-highlight: #FFFFFF;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
   --brand-violet: #8639ff;
   --brand-violet-dark: #5725a2;
   --brand-violet-light: #EDE9FD;
