@@ -71,34 +71,6 @@ export const articles: Article[] = [
 <p>The numbers don't lie. But the methodology matters as much as the result.</p>
 `,
   },
-  {
-    slug: "outcome-index",
-    title: "The Outcome Index",
-    subtitle:
-      "A framework for measuring what matters in enterprise voice AI — outcomes, not tokens",
-    category: "Methodology",
-    author: "Synthflow Labs",
-    authorRole: "",
-    date: "Coming Soon",
-    readTime: "",
-    published: false,
-    keyTakeaways: [],
-    body: "",
-  },
-  {
-    slug: "stt-provider-comparison",
-    title: "STT Provider Deep Dive: Accuracy vs. Latency Trade-offs",
-    subtitle:
-      "Comparing Deepgram, Google, and Whisper across accents, noise, and languages",
-    category: "Voice Quality",
-    author: "Synthflow Labs",
-    authorRole: "",
-    date: "Coming Soon",
-    readTime: "",
-    published: false,
-    keyTakeaways: [],
-    body: "",
-  },
 ];
 
 export const categories = [
