@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 /* ── data ─────────────────────────────────────────────── */
@@ -185,10 +187,10 @@ const bottomLinks = [
 const colHeadingStyle: React.CSSProperties = {
   fontFamily: "var(--font-mono)",
   fontSize: 12,
-  fontWeight: 700,
+  fontWeight: 600,
   textTransform: "uppercase",
   letterSpacing: "0.08em",
-  color: "#110229",
+  color: "#797e86",
   marginBottom: 16,
 };
 
@@ -199,6 +201,11 @@ const colLinkStyle: React.CSSProperties = {
   color: "#595959",
   textDecoration: "none",
   display: "block",
+  letterSpacing: "-0.49px",
+};
+
+const sectionDivider: React.CSSProperties = {
+  borderTop: "1px solid rgba(255,255,255,0.05)",
 };
 
 /* ── component ────────────────────────────────────────── */
@@ -209,24 +216,9 @@ export default function Footer() {
       style={{
         position: "relative",
         overflow: "hidden",
-        background: "#fdf2ff",
+        background: "linear-gradient(180deg, #1a1a2e 0%, #0d0d17 100%)",
       }}
     >
-      {/* Background image */}
-      <img
-        src="https://cdn.prod.website-files.com/67558e246490829b0a44ad8e/68fb754af02d2b2d5f7e3fe2_Background%20Footer.png"
-        alt=""
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-
       {/* Content wrapper */}
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* ── Top section: brand + 4 columns ── */}
@@ -259,7 +251,7 @@ export default function Footer() {
               >
                 <path
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5v-3.07c-1.58-.22-3-1.02-3.97-2.28l1.49-1.49A5.016 5.016 0 0012 12.5c1.52 0 2.9-.62 3.89-1.63l1.49 1.49c-.97 1.26-2.39 2.06-3.97 2.28v3.36h-2.41z"
-                  fill="#110229"
+                  fill="#e6e6e6"
                 />
               </svg>
               <span
@@ -267,7 +259,7 @@ export default function Footer() {
                   fontFamily: "var(--font-body)",
                   fontSize: 20,
                   fontWeight: 700,
-                  color: "#110229",
+                  color: "#e6e6e6",
                   letterSpacing: "-0.5px",
                 }}
               >
@@ -281,7 +273,7 @@ export default function Footer() {
                 fontFamily: "var(--font-body)",
                 fontSize: 14,
                 lineHeight: "22px",
-                color: "#595959",
+                color: "#797e86",
                 maxWidth: 360,
                 marginBottom: 28,
               }}
@@ -310,7 +302,7 @@ export default function Footer() {
                   style={{
                     fontFamily: "var(--font-body)",
                     fontSize: 14,
-                    color: "#110229",
+                    color: "#797e86",
                     textDecoration: "none",
                   }}
                 >
@@ -331,7 +323,7 @@ export default function Footer() {
           >
             {footerColumnsTop.map((col) => (
               <div key={col.heading}>
-                <div style={colHeadingStyle}>{col.heading}</div>
+                <div style={colHeadingStyle}>// {col.heading}</div>
                 <div>
                   {col.links.map((link) => (
                     <div
@@ -358,10 +350,10 @@ export default function Footer() {
                             fontWeight: 700,
                             textTransform: "uppercase",
                             letterSpacing: "0.05em",
-                            color: "#fff",
-                            background: "#5b0dd5",
+                            color: "#e6e6e6",
+                            background: "rgba(255,255,255,0.1)",
                             padding: "2px 8px",
-                            borderRadius: 999,
+                            borderRadius: 4,
                             whiteSpace: "nowrap",
                           }}
                         >
@@ -374,6 +366,17 @@ export default function Footer() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* ── Divider ── */}
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 32px",
+          }}
+        >
+          <div style={sectionDivider} />
         </div>
 
         {/* ── Newsletter section ── */}
@@ -391,7 +394,12 @@ export default function Footer() {
           <div style={{ width: "35%", flexShrink: 0 }}>
             <div
               style={{
-                ...colHeadingStyle,
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: "#797e86",
                 marginBottom: 20,
                 lineHeight: "18px",
               }}
@@ -410,11 +418,11 @@ export default function Footer() {
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: 14,
-                  color: "#110229",
-                  background: "#fff",
-                  border: "1px solid #d4d4d4",
+                  color: "#e6e6e6",
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
                   borderRight: "none",
-                  borderRadius: "6px 0 0 6px",
+                  borderRadius: "4px 0 0 4px",
                   padding: "10px 16px",
                   flex: 1,
                   outline: "none",
@@ -428,10 +436,10 @@ export default function Footer() {
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: "0.06em",
-                  color: "#fff",
-                  background: "#5b0dd5",
+                  color: "#1a1a2e",
+                  background: "#fff",
                   border: "none",
-                  borderRadius: "0 6px 6px 0",
+                  borderRadius: "0 4px 4px 0",
                   padding: "10px 20px",
                   cursor: "pointer",
                 }}
@@ -452,7 +460,7 @@ export default function Footer() {
           >
             {footerColumnsBottom.map((col) => (
               <div key={col.heading}>
-                <div style={colHeadingStyle}>{col.heading}</div>
+                <div style={colHeadingStyle}>// {col.heading}</div>
                 <div>
                   {col.links.map((link) => (
                     <a
@@ -471,6 +479,17 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ── Divider ── */}
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 32px",
+          }}
+        >
+          <div style={sectionDivider} />
+        </div>
+
         {/* ── Backed by ── */}
         <div
           style={{
@@ -479,7 +498,19 @@ export default function Footer() {
             padding: "40px 32px 24px",
           }}
         >
-          <div style={{ ...colHeadingStyle, marginBottom: 20 }}>BACKED BY</div>
+          <div
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 12,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "#797e86",
+              marginBottom: 20,
+            }}
+          >
+            // BACKED BY
+          </div>
           <div
             style={{
               display: "flex",
@@ -492,7 +523,11 @@ export default function Footer() {
                 key={logo.alt}
                 src={logo.src}
                 alt={logo.alt}
-                style={{ height: 28, objectFit: "contain" }}
+                style={{
+                  height: 28,
+                  objectFit: "contain",
+                  filter: "brightness(0) invert(0.6)",
+                }}
               />
             ))}
           </div>
@@ -506,8 +541,18 @@ export default function Footer() {
             padding: "24px 32px 40px",
           }}
         >
-          <div style={{ ...colHeadingStyle, marginBottom: 20 }}>
-            TRUSTED &amp; VERIFIED BY
+          <div
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 12,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "#797e86",
+              marginBottom: 20,
+            }}
+          >
+            // TRUSTED &amp; VERIFIED BY
           </div>
           <div
             style={{
@@ -521,7 +566,11 @@ export default function Footer() {
                 key={badge.alt}
                 src={badge.src}
                 alt={badge.alt}
-                style={{ height: 80, objectFit: "contain" }}
+                style={{
+                  height: 80,
+                  objectFit: "contain",
+                  filter: "brightness(0) invert(0.5)",
+                }}
               />
             ))}
           </div>
@@ -530,7 +579,8 @@ export default function Footer() {
         {/* ── Bottom bar ── */}
         <div
           style={{
-            borderTop: "1px solid rgba(17, 2, 41, 0.08)",
+            background: "#0d0d17",
+            borderTop: "1px solid rgba(255,255,255,0.05)",
           }}
         >
           <div
@@ -569,7 +619,7 @@ export default function Footer() {
                   {i > 0 && (
                     <span
                       style={{
-                        color: "#ccc",
+                        color: "rgba(255,255,255,0.1)",
                         fontSize: 13,
                         userSelect: "none",
                       }}
@@ -597,7 +647,7 @@ export default function Footer() {
               <span style={{ display: "flex", alignItems: "center", gap: 20 }}>
                 <span
                   style={{
-                    color: "#ccc",
+                    color: "rgba(255,255,255,0.1)",
                     fontSize: 13,
                     userSelect: "none",
                   }}

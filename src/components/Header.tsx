@@ -7,6 +7,7 @@ export default function Header() {
     <header
       style={{
         background: "#fff",
+        borderBottom: "1px solid #f8f8fa",
         position: "sticky",
         top: 0,
         zIndex: 100,
@@ -14,9 +15,9 @@ export default function Header() {
     >
       <div
         style={{
-          maxWidth: 1200,
+          maxWidth: 1120,
           margin: "0 auto",
-          padding: "12px 32px",
+          padding: "16px 32px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -41,15 +42,15 @@ export default function Header() {
           >
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5v-3.07c-1.58-.22-3-1.02-3.97-2.28l1.49-1.49A5.016 5.016 0 0012 12.5c1.52 0 2.9-.62 3.89-1.63l1.49 1.49c-.97 1.26-2.39 2.06-3.97 2.28v3.36h-2.41z"
-              fill="#110229"
+              fill="#1a1a2e"
             />
           </svg>
           <span
             style={{
               fontFamily: "var(--font-body)",
               fontSize: 20,
-              fontWeight: 700,
-              color: "#110229",
+              fontWeight: 500,
+              color: "#1a1a2e",
               letterSpacing: "-0.5px",
             }}
           >
@@ -69,18 +70,20 @@ export default function Header() {
           <span
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
               gap: 4,
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Solutions
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-              <path d="M1 1l4 4 4-4" stroke="#110229" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M1 1l4 4 4-4" stroke="#797e86" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
 
@@ -90,10 +93,12 @@ export default function Header() {
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               textDecoration: "none",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Customers
@@ -105,10 +110,12 @@ export default function Header() {
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               textDecoration: "none",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Integrations
@@ -120,10 +127,12 @@ export default function Header() {
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               textDecoration: "none",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Pricing
@@ -133,23 +142,25 @@ export default function Header() {
           <span
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
               gap: 4,
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Resources
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-              <path d="M1 1l4 4 4-4" stroke="#110229" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M1 1l4 4 4-4" stroke="#797e86" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
         </nav>
 
-        {/* Right: Login + CTAs + EN */}
+        {/* Right: separator + Login + CTAs */}
         <div
           style={{
             display: "flex",
@@ -157,17 +168,29 @@ export default function Header() {
             gap: 12,
           }}
         >
+          {/* Vertical separator */}
+          <div
+            style={{
+              width: 1,
+              height: 24,
+              background: "#f8f8fa",
+              marginRight: 4,
+            }}
+          />
+
           <a
             href="https://app.synthflow.ai"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 400,
-              color: "#110229",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "#797e86",
               textDecoration: "none",
               padding: "8px 12px",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Login
@@ -179,15 +202,19 @@ export default function Header() {
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: 500,
-              background: "#110229",
+              background: "#1a1a2e",
               color: "#fff",
-              padding: "8px 20px",
-              borderRadius: 999,
+              padding: "8px 12px",
+              borderRadius: 4,
               textDecoration: "none",
               display: "inline-flex",
               alignItems: "center",
+              minWidth: 64,
+              justifyContent: "center",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
             Start Now
@@ -199,31 +226,23 @@ export default function Header() {
             rel="noopener noreferrer"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: 500,
-              background: "#5b0dd5",
+              background: "#1a1a2e",
               color: "#fff",
-              padding: "8px 20px",
-              borderRadius: 999,
+              padding: "8px 12px",
+              borderRadius: 4,
               textDecoration: "none",
               display: "inline-flex",
               alignItems: "center",
+              minWidth: 64,
+              justifyContent: "center",
+              letterSpacing: "-0.3px",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
-            Contact Sales
+            Contact Sales &rarr;
           </a>
-
-          <span
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: 500,
-              color: "#110229",
-              marginLeft: 4,
-            }}
-          >
-            EN
-          </span>
         </div>
       </div>
     </header>
