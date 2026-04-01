@@ -227,7 +227,7 @@ export default async function ArticlePage({
       {/* More from Labs — dark section */}
       <section
         style={{
-          background: "linear-gradient(180deg, #0d0d17 0%, #1a1a2e 100%)",
+          background: "linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-dark) 100%)",
           padding: "120px 0",
         }}
       >

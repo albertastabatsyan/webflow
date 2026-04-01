@@ -1,20 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-mono/style.css");
 @import "tailwindcss";
 
 :root {
-  --navy-dark: #1a1a2e;
-  --navy-deep: #0d0d17;
-  --light-bg: #f2f2f8;
+  --navy-dark: #1F293A;
+  --navy-deep: #0F172A;
+  --light-bg: #F8FAFC;
   --white: #ffffff;
-  --border: #f8f8fa;
-  --text-secondary: #797e86;
-  --text-label: #464b53;
-  --red-accent: #aa4545;
-  --text-light: #e6e6e6;
-  --text-light-highlight: #f5f4f5;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --border: #E3E8F0;
+  --text-secondary: #66748A;
+  --text-label: #4E5B6F;
+  --accent: #8639ff;
+  --text-light: #F8FAFC;
+  --text-light-highlight: #FFFFFF;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --brand-violet: #8639ff;
+  --brand-violet-dark: #5725a2;
+  --brand-violet-light: #EDE9FD;
   --max-width: 1120px;
   --side-padding: 160px;
   --side-padding-mobile: 32px;
@@ -141,7 +144,7 @@ body {
 
 .lab-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(26, 26, 46, 0.06);
+  box-shadow: 0 12px 40px rgba(31, 41, 58, 0.08);
 }
 
 /* Stagger animation */

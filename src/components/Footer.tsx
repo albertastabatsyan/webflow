@@ -71,7 +71,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "linear-gradient(180deg, #1a1a2e 0%, #0d0d17 100%)",
+        background: "linear-gradient(180deg, var(--navy-dark) 0%, var(--navy-deep) 100%)",
       }}
     >
       {/* Main footer */}

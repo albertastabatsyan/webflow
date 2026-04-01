@@ -49,7 +49,7 @@ export default function Header() {
               fontFeatureSettings: "'dlig' 1, 'cv05' 1, 'cv07' 1, 'cv06' 1",
               fontSize: 20,
               fontWeight: 500,
-              color: "#1a1a2e",
+              color: "var(--navy-dark)",
               letterSpacing: "-1px",
             }}
           >
@@ -62,7 +62,7 @@ export default function Header() {
           <a href="https://synthflow.ai/customer-stories" target="_blank" rel="noopener noreferrer" style={navLink}>Customers</a>
           <a href="https://synthflow.ai/integrations" target="_blank" rel="noopener noreferrer" style={navLink}>Integrations</a>
           <a href="https://synthflow.ai/pricing" target="_blank" rel="noopener noreferrer" style={navLink}>Pricing</a>
-          <Link href="/" style={{ ...navLink, color: "#1a1a2e" }}>Labs</Link>
+          <Link href="/" style={{ ...navLink, color: "var(--navy-dark)" }}>Labs</Link>
         </nav>
 
         {/* Right */}
@@ -92,7 +92,7 @@ export default function Header() {
               fontFeatureSettings: "'dlig' 1",
               fontSize: 15,
               fontWeight: 500,
-              background: "#1a1a2e",
+              background: "var(--navy-dark)",
               color: "#fff",
               padding: "8px 16px",
               borderRadius: 4,
