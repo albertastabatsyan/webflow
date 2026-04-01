@@ -126,8 +126,8 @@ export const articles: Article[] = [
 <p>When you evaluate voice AI latency, ask for production numbers. Ask for p95, not just p50. Ask whether the benchmark includes the full conversational pipeline or just the LLM hop.</p>
 <p>The numbers don't lie. But the methodology matters as much as the result.</p>
 `,
-  },,
-
+  },
+];
 
 export const categories = [
   "All",
