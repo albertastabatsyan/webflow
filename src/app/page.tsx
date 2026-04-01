@@ -14,96 +14,131 @@ export default function LabsIndex() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="mesh-hero noise relative overflow-hidden">
-        <div
-          style={{
-            maxWidth: 1100,
-            margin: "0 auto",
-            padding: "80px 32px 72px",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          {/* Nav */}
-          <nav
+      {/* Nav */}
+      <nav
+        style={{
+          maxWidth: 1120,
+          margin: "0 auto",
+          padding: "24px 32px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 64,
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: "var(--text-secondary)",
+              fontFeatureSettings: "'dlig' 1",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase" as const,
-                  color: "rgba(255,255,255,0.5)",
-                }}
-              >
-                Synthflow
-              </span>
-              <span
-                style={{
-                  width: 1,
-                  height: 16,
-                  background: "rgba(255,255,255,0.2)",
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase" as const,
-                  color: "#fff",
-                }}
-              >
-                Labs
-              </span>
-            </div>
-            <a
-              href="https://synthflow.ai"
+            Synthflow
+          </span>
+          <span
+            style={{
+              width: 1,
+              height: 16,
+              background: "var(--border)",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: "var(--navy-dark)",
+              fontFeatureSettings: "'dlig' 1",
+            }}
+          >
+            Labs
+          </span>
+        </div>
+        <a
+          href="https://synthflow.ai"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 15,
+            fontWeight: 500,
+            textDecoration: "none",
+            fontFeatureSettings: "'dlig' 1",
+            letterSpacing: "-0.3px",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 4,
+            background: "var(--navy-dark)",
+            color: "var(--white)",
+            padding: "8px 12px",
+            borderRadius: 4,
+            minWidth: 64,
+          }}
+        >
+          synthflow.ai <span style={{ marginLeft: 2 }}>→</span>
+        </a>
+      </nav>
+
+      {/* Hero */}
+      <section
+        style={{
+          background: "linear-gradient(180deg, var(--white) 0%, var(--light-bg) 100%)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1120,
+            margin: "0 auto",
+            padding: "80px 32px 80px",
+          }}
+        >
+          {/* Hero content */}
+          <div style={{ maxWidth: 720 }}>
+            <div
+              className="fade-up"
               style={{
-                fontFamily: "var(--font-body)",
+                fontFamily: "var(--font-mono)",
                 fontSize: 13,
-                color: "rgba(255,255,255,0.4)",
-                textDecoration: "none",
+                fontWeight: 500,
+                textTransform: "uppercase" as const,
+                letterSpacing: "0.08em",
+                color: "var(--text-secondary)",
+                marginBottom: 24,
               }}
             >
-              synthflow.ai ↗
-            </a>
-          </nav>
-
-          {/* Hero content */}
-          <div style={{ maxWidth: 680 }}>
+              // RESEARCH
+            </div>
             <h1
               className="fade-up"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 48,
-                fontWeight: 700,
-                lineHeight: 1.1,
-                letterSpacing: "-0.03em",
-                color: "#fff",
-                marginBottom: 20,
+                fontFeatureSettings: "'dlig' 1",
+                fontSize: 56,
+                fontWeight: 500,
+                lineHeight: "65px",
+                letterSpacing: "-2.8px",
+                color: "var(--navy-dark)",
+                marginBottom: 24,
+                animationDelay: "0.05s",
               }}
             >
-              Research &<br />Engineering
+              Research &amp; Engineering
             </h1>
             <p
               className="fade-up"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 18,
-                lineHeight: 1.6,
-                color: "rgba(255,255,255,0.6)",
-                maxWidth: 520,
+                fontFeatureSettings: "'dlig' 1",
+                fontSize: 20,
+                lineHeight: "28px",
+                letterSpacing: "-0.7px",
+                color: "var(--text-secondary)",
+                maxWidth: 560,
                 animationDelay: "0.1s",
               }}
             >
@@ -117,11 +152,11 @@ export default function LabsIndex() {
             className="fade-up"
             style={{
               display: "flex",
-              gap: 48,
-              marginTop: 48,
+              gap: 64,
+              marginTop: 64,
               paddingTop: 32,
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-              animationDelay: "0.2s",
+              borderTop: "1px solid var(--border)",
+              animationDelay: "0.15s",
             }}
           >
             {[
@@ -134,8 +169,8 @@ export default function LabsIndex() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 28,
-                    fontWeight: 700,
-                    color: "#fff",
+                    fontWeight: 500,
+                    color: "var(--navy-dark)",
                     letterSpacing: "-0.02em",
                   }}
                 >
@@ -144,10 +179,11 @@ export default function LabsIndex() {
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: 11,
+                    fontSize: 13,
+                    fontWeight: 500,
                     textTransform: "uppercase" as const,
                     letterSpacing: "0.08em",
-                    color: "rgba(255,255,255,0.35)",
+                    color: "var(--text-secondary)",
                     marginTop: 4,
                   }}
                 >
@@ -156,72 +192,98 @@ export default function LabsIndex() {
               </div>
             ))}
           </div>
+
+          {/* Compliance bar */}
+          <div
+            className="fade-up"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              textTransform: "uppercase" as const,
+              letterSpacing: "0.08em",
+              color: "var(--text-secondary)",
+              marginTop: 32,
+              animationDelay: "0.2s",
+            }}
+          >
+            SOC 2 // HIPAA // PCI DSS // GDPR
+          </div>
         </div>
       </section>
 
-      {/* Filter + Cards */}
-      <section className="dot-grid" style={{ background: "var(--purple-wash)" }}>
+      {/* Filter bar */}
+      <section
+        style={{
+          background: "var(--white)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
         <div
           style={{
-            maxWidth: 1100,
+            maxWidth: 1120,
             margin: "0 auto",
-            padding: "48px 32px 80px",
+            padding: "32px 32px",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            flexWrap: "wrap" as const,
           }}
         >
-          {/* Filters */}
-          <div
+          <span
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              marginBottom: 40,
-              flexWrap: "wrap" as const,
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              textTransform: "uppercase" as const,
+              letterSpacing: "0.08em",
+              color: "var(--text-secondary)",
+              marginRight: 8,
             }}
           >
-            <span
+            // PUBLICATIONS
+          </span>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                textTransform: "uppercase" as const,
-                letterSpacing: "0.08em",
-                color: "var(--gray-400)",
-                marginRight: 8,
+                padding: "8px 12px",
+                borderRadius: 4,
+                fontFamily: "var(--font-body)",
+                fontFeatureSettings: "'dlig' 1",
+                fontSize: 15,
+                fontWeight: 500,
+                letterSpacing: "-0.3px",
+                border: "none",
+                background:
+                  activeFilter === cat ? "var(--navy-dark)" : "transparent",
+                color: activeFilter === cat ? "var(--white)" : "var(--text-secondary)",
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+                minWidth: 64,
               }}
             >
-              Filter
-            </span>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                style={{
-                  padding: "6px 16px",
-                  borderRadius: 8,
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  border:
-                    activeFilter === cat
-                      ? "1px solid var(--purple-primary)"
-                      : "1px solid var(--gray-200)",
-                  background:
-                    activeFilter === cat ? "var(--purple-deep)" : "var(--white)",
-                  color: activeFilter === cat ? "#fff" : "var(--gray-600)",
-                  cursor: "pointer",
-                  transition: "all 0.15s ease",
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
 
-          {/* Cards */}
+      {/* Cards */}
+      <section style={{ background: "var(--white)" }}>
+        <div
+          style={{
+            maxWidth: 1120,
+            margin: "0 auto",
+            padding: "64px 32px 120px",
+          }}
+        >
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-              gap: 20,
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 24,
             }}
           >
             {filtered.map((article, i) => {
@@ -229,51 +291,27 @@ export default function LabsIndex() {
                 <div style={{ padding: 28 }}>
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 13,
+                      fontWeight: 500,
+                      textTransform: "uppercase" as const,
+                      letterSpacing: "0.08em",
+                      color: "var(--text-secondary)",
                       marginBottom: 16,
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 11,
-                        fontWeight: 600,
-                        textTransform: "uppercase" as const,
-                        letterSpacing: "0.06em",
-                        color: "var(--purple-primary)",
-                      }}
-                    >
-                      {article.category}
-                    </span>
-                    <span
-                      style={{
-                        width: 4,
-                        height: 4,
-                        borderRadius: "50%",
-                        background: "var(--gray-200)",
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: 12,
-                        color: "var(--gray-400)",
-                      }}
-                    >
-                      {article.date}
-                    </span>
+                    // {article.category.toUpperCase()}
                   </div>
                   <h3
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: 20,
-                      fontWeight: 700,
-                      lineHeight: 1.3,
-                      color: "var(--purple-deep)",
+                      fontFeatureSettings: "'dlig' 1",
+                      fontSize: 18,
+                      fontWeight: 500,
+                      lineHeight: 1.4,
+                      letterSpacing: "-0.63px",
+                      color: "var(--text-label)",
                       marginBottom: 10,
-                      letterSpacing: "-0.01em",
                     }}
                   >
                     {article.title}
@@ -281,10 +319,12 @@ export default function LabsIndex() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: 14,
-                      lineHeight: 1.6,
-                      color: "var(--gray-600)",
-                      marginBottom: 20,
+                      fontFeatureSettings: "'dlig' 1",
+                      fontSize: 15,
+                      lineHeight: "21px",
+                      letterSpacing: "-0.525px",
+                      color: "var(--text-secondary)",
+                      marginBottom: 24,
                     }}
                   >
                     {article.subtitle}
@@ -293,7 +333,7 @@ export default function LabsIndex() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: 8,
+                      gap: 10,
                     }}
                   >
                     <div
@@ -301,14 +341,14 @@ export default function LabsIndex() {
                         width: 28,
                         height: 28,
                         borderRadius: "50%",
-                        background: "var(--purple-light)",
+                        background: "var(--light-bg)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontFamily: "var(--font-mono)",
                         fontSize: 10,
-                        fontWeight: 700,
-                        color: "var(--purple-primary)",
+                        fontWeight: 500,
+                        color: "var(--navy-dark)",
                       }}
                     >
                       {article.author
@@ -319,9 +359,10 @@ export default function LabsIndex() {
                     <span
                       style={{
                         fontFamily: "var(--font-body)",
-                        fontSize: 13,
+                        fontFeatureSettings: "'dlig' 1",
+                        fontSize: 14,
                         fontWeight: 500,
-                        color: "var(--gray-900)",
+                        color: "var(--navy-dark)",
                       }}
                     >
                       {article.author}
@@ -330,8 +371,9 @@ export default function LabsIndex() {
                       <span
                         style={{
                           fontFamily: "var(--font-body)",
-                          fontSize: 12,
-                          color: "var(--gray-400)",
+                          fontFeatureSettings: "'dlig' 1",
+                          fontSize: 14,
+                          color: "var(--text-secondary)",
                           marginLeft: "auto",
                         }}
                       >
@@ -351,8 +393,8 @@ export default function LabsIndex() {
                     style={{
                       display: "block",
                       background: "var(--white)",
-                      borderRadius: 16,
-                      border: "1px solid var(--gray-200)",
+                      borderRadius: 4,
+                      border: "1px solid var(--border)",
                       textDecoration: "none",
                       color: "inherit",
                       overflow: "hidden",
@@ -370,9 +412,9 @@ export default function LabsIndex() {
                   className="fade-up"
                   style={{
                     background: "var(--white)",
-                    borderRadius: 16,
-                    border: "1px dashed var(--gray-200)",
-                    opacity: 0.55,
+                    borderRadius: 4,
+                    border: "1px dashed var(--border)",
+                    opacity: 0.5,
                     animationDelay: `${i * 0.08}s`,
                   }}
                 >
@@ -387,13 +429,13 @@ export default function LabsIndex() {
       {/* Footer */}
       <footer
         style={{
-          borderTop: "1px solid var(--gray-100)",
+          borderTop: "1px solid var(--border)",
           padding: "32px",
         }}
       >
         <div
           style={{
-            maxWidth: 1100,
+            maxWidth: 1120,
             margin: "0 auto",
             display: "flex",
             justifyContent: "space-between",
@@ -403,25 +445,27 @@ export default function LabsIndex() {
           <span
             style={{
               fontFamily: "var(--font-mono)",
-              fontSize: 11,
+              fontSize: 13,
+              fontWeight: 500,
               letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
-              color: "var(--gray-400)",
+              color: "var(--text-secondary)",
             }}
           >
-            Synthflow Labs
+            SYNTHFLOW LABS
           </span>
           <span
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 12,
-              color: "var(--gray-400)",
+              fontFeatureSettings: "'dlig' 1",
+              fontSize: 14,
+              color: "var(--text-secondary)",
             }}
           >
             Part of{" "}
             <a
               href="https://synthflow.ai"
-              style={{ color: "var(--purple-primary)", textDecoration: "none" }}
+              style={{ color: "var(--navy-dark)", textDecoration: "none" }}
             >
               Synthflow AI
             </a>

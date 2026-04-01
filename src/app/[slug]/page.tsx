@@ -27,9 +27,10 @@ function ArticleBody({ html }: { html: string }) {
       className="labs-body"
       style={{
         fontFamily: "var(--font-body)",
+        fontFeatureSettings: "'dlig' 1",
         fontSize: 17,
         lineHeight: 1.75,
-        color: "var(--gray-900)",
+        color: "var(--text-label)",
       }}
       dangerouslySetInnerHTML={{ __html: html }}
     />
@@ -45,84 +46,85 @@ export default async function ArticlePage({
   const article = getArticle(slug);
   if (!article || !article.published) notFound();
 
-  const moreArticles = articles.filter((a) => a.slug !== slug);
+  const moreArticles = articles.filter(
+    (a) => a.slug !== slug && a.published
+  ).slice(0, 3);
 
   return (
     <div>
-      {/* Header */}
-      <section className="mesh-hero noise relative overflow-hidden">
+      {/* Back nav */}
+      <nav
+        style={{
+          maxWidth: 800,
+          margin: "0 auto",
+          padding: "24px 32px",
+        }}
+      >
+        <Link
+          href="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            fontFamily: "var(--font-mono)",
+            fontSize: 13,
+            fontWeight: 500,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--text-secondary)",
+            textDecoration: "none",
+          }}
+        >
+          ← SYNTHFLOW LABS
+        </Link>
+      </nav>
+
+      {/* Article header */}
+      <section style={{ background: "var(--white)" }}>
         <div
           style={{
             maxWidth: 800,
             margin: "0 auto",
-            padding: "48px 32px 64px",
-            position: "relative",
-            zIndex: 1,
+            padding: "48px 32px 48px",
           }}
         >
-          {/* Nav */}
-          <nav style={{ marginBottom: 48 }}>
-            <Link
-              href="/"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                fontFamily: "var(--font-mono)",
-                fontSize: 12,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.4)",
-                textDecoration: "none",
-              }}
-            >
-              ← Synthflow Labs
-            </Link>
-          </nav>
-
           <div
             style={{
-              display: "inline-block",
-              padding: "4px 14px",
-              borderRadius: 6,
-              background: "rgba(255,255,255,0.1)",
-              backdropFilter: "blur(8px)",
-              marginBottom: 20,
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "var(--text-secondary)",
+              marginBottom: 24,
             }}
           >
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "rgba(255,255,255,0.7)",
-              }}
-            >
-              {article.category}
-            </span>
+            // {article.category.toUpperCase()}
           </div>
 
           <h1
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 44,
-              fontWeight: 700,
-              lineHeight: 1.12,
-              letterSpacing: "-0.03em",
-              color: "#fff",
+              fontFeatureSettings: "'dlig' 1",
+              fontSize: 48,
+              fontWeight: 500,
+              lineHeight: 1.15,
+              letterSpacing: "-2.4px",
+              color: "var(--navy-dark)",
               marginBottom: 16,
             }}
           >
             {article.title}
           </h1>
+
           <p
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: 18,
-              lineHeight: 1.5,
-              color: "rgba(255,255,255,0.55)",
+              fontFeatureSettings: "'dlig' 1",
+              fontSize: 20,
+              lineHeight: "28px",
+              letterSpacing: "-0.7px",
+              color: "var(--text-secondary)",
               marginBottom: 32,
             }}
           >
@@ -131,56 +133,17 @@ export default async function ArticlePage({
 
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              paddingTop: 24,
-              borderTop: "1px solid rgba(255,255,255,0.08)",
+              fontFamily: "var(--font-body)",
+              fontFeatureSettings: "'dlig' 1",
+              fontSize: 14,
+              color: "var(--text-secondary)",
+              paddingBottom: 32,
+              borderBottom: "1px solid var(--border)",
             }}
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.1)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "var(--font-mono)",
-                fontSize: 12,
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.7)",
-              }}
-            >
-              {article.author
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: "rgba(255,255,255,0.8)",
-                }}
-              >
-                {article.author}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  color: "rgba(255,255,255,0.35)",
-                }}
-              >
-                {[article.authorRole, article.date, article.readTime]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </div>
-            </div>
+            {[article.author, article.authorRole, article.date, article.readTime]
+              .filter(Boolean)
+              .join(" · ")}
           </div>
         </div>
       </section>
@@ -191,7 +154,7 @@ export default async function ArticlePage({
           style={{
             maxWidth: 680,
             margin: "0 auto",
-            padding: "56px 32px 80px",
+            padding: "48px 32px 80px",
           }}
         >
           {/* Key Takeaways */}
@@ -200,39 +163,24 @@ export default async function ArticlePage({
               style={{
                 marginBottom: 56,
                 padding: 28,
-                borderRadius: 12,
-                background: "var(--purple-wash)",
-                border: "1px solid rgba(91, 13, 213, 0.08)",
+                borderRadius: 4,
+                background: "var(--white)",
+                border: "1px solid var(--border)",
+                borderLeft: "3px solid var(--navy-dark)",
               }}
             >
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  marginBottom: 16,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--text-secondary)",
+                  marginBottom: 20,
                 }}
               >
-                <div
-                  style={{
-                    width: 3,
-                    height: 18,
-                    borderRadius: 2,
-                    background: "var(--purple-primary)",
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    color: "var(--purple-deep)",
-                  }}
-                >
-                  Key Takeaways
-                </span>
+                // KEY TAKEAWAYS
               </div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {article.keyTakeaways.map((t, i) => (
@@ -240,12 +188,14 @@ export default async function ArticlePage({
                     key={i}
                     style={{
                       position: "relative",
-                      paddingLeft: 16,
+                      paddingLeft: 18,
                       marginBottom: i < article.keyTakeaways.length - 1 ? 14 : 0,
                       fontFamily: "var(--font-body)",
-                      fontSize: 14,
-                      lineHeight: 1.6,
-                      color: "var(--gray-900)",
+                      fontFeatureSettings: "'dlig' 1",
+                      fontSize: 15,
+                      lineHeight: "21px",
+                      letterSpacing: "-0.525px",
+                      color: "var(--text-label)",
                     }}
                   >
                     <span
@@ -256,7 +206,7 @@ export default async function ArticlePage({
                         width: 5,
                         height: 5,
                         borderRadius: "50%",
-                        background: "var(--purple-accent)",
+                        background: "var(--navy-dark)",
                       }}
                     />
                     {t}
@@ -271,105 +221,161 @@ export default async function ArticlePage({
         </div>
       </section>
 
-      {/* More from Labs */}
-      <section className="dot-grid" style={{ background: "var(--purple-wash)" }}>
+      {/* More from Labs — dark section */}
+      <section
+        style={{
+          background: "linear-gradient(180deg, #0d0d17 0%, #1a1a2e 100%)",
+          padding: "120px 0",
+        }}
+      >
         <div
           style={{
-            maxWidth: 1100,
+            maxWidth: 1120,
             margin: "0 auto",
-            padding: "56px 32px 64px",
+            padding: "0 32px",
           }}
         >
+          <div
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "var(--text-secondary)",
+              marginBottom: 20,
+            }}
+          >
+            // MORE FROM LABS
+          </div>
+
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              marginBottom: 28,
+              marginBottom: 48,
             }}
           >
             <h2
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 22,
-                fontWeight: 700,
-                color: "var(--purple-deep)",
-                letterSpacing: "-0.02em",
+                fontFeatureSettings: "'dlig' 1",
+                fontSize: 40,
+                fontWeight: 500,
+                letterSpacing: "-2px",
+                lineHeight: "48px",
+                color: "#e6e6e6",
               }}
             >
-              More from Labs
+              More research
             </h2>
             <Link
               href="/"
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 12,
-                color: "var(--purple-primary)",
+                fontFamily: "var(--font-body)",
+                fontFeatureSettings: "'dlig' 1",
+                fontSize: 15,
+                fontWeight: 500,
+                letterSpacing: "-0.3px",
+                color: "var(--text-secondary)",
                 textDecoration: "none",
-                letterSpacing: "0.04em",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 4,
               }}
             >
-              View all →
+              View all research →
             </Link>
           </div>
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-              gap: 16,
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 24,
             }}
           >
-            {moreArticles.map((a) => (
-              <div
-                key={a.slug}
-                className="lab-card"
-                style={{
-                  padding: 24,
-                  background: "var(--white)",
-                  borderRadius: 12,
-                  border: a.published
-                    ? "1px solid var(--gray-200)"
-                    : "1px dashed var(--gray-200)",
-                  opacity: a.published ? 1 : 0.5,
-                }}
-              >
-                <span
+            {moreArticles.map((a) => {
+              const cardContent = (
+                <div style={{ padding: 28 }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 13,
+                      fontWeight: 500,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "var(--text-secondary)",
+                      marginBottom: 16,
+                    }}
+                  >
+                    // {a.category.toUpperCase()}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontFeatureSettings: "'dlig' 1",
+                      fontSize: 18,
+                      fontWeight: 500,
+                      lineHeight: 1.4,
+                      letterSpacing: "-0.63px",
+                      color: "#e6e6e6",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {a.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontFeatureSettings: "'dlig' 1",
+                      fontSize: 15,
+                      lineHeight: "21px",
+                      letterSpacing: "-0.525px",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {a.subtitle}
+                  </p>
+                </div>
+              );
+
+              if (a.published) {
+                return (
+                  <Link
+                    key={a.slug}
+                    href={`/${a.slug}`}
+                    className="lab-card"
+                    style={{
+                      display: "block",
+                      background: "rgba(255, 255, 255, 0.04)",
+                      borderRadius: 4,
+                      border: "1px solid rgba(255, 255, 255, 0.06)",
+                      textDecoration: "none",
+                      color: "inherit",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {cardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <div
+                  key={a.slug}
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    color: "var(--purple-primary)",
+                    background: "rgba(255, 255, 255, 0.02)",
+                    borderRadius: 4,
+                    border: "1px dashed rgba(255, 255, 255, 0.06)",
+                    opacity: 0.5,
                   }}
                 >
-                  {a.category}
-                </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 16,
-                    fontWeight: 700,
-                    lineHeight: 1.3,
-                    color: "var(--purple-deep)",
-                    margin: "10px 0 6px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {a.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 13,
-                    lineHeight: 1.5,
-                    color: "var(--gray-600)",
-                  }}
-                >
-                  {a.subtitle}
-                </p>
-              </div>
-            ))}
+                  {cardContent}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
