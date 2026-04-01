@@ -84,6 +84,19 @@ body {
   background: var(--navy-dark);
 }
 
+.labs-body hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+.labs-body a {
+  color: var(--navy-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .labs-body table {
   width: 100%;
   border-collapse: separate;

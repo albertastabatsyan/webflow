@@ -87,43 +87,60 @@ export const articles: Article[] = [
       "Aurora is an AI co-pilot that operates the full Synthflow platform through natural language, turning days of configuration into a single conversation.",
     ],
     body: `
-<h2>The Configuration Bottleneck</h2>
 <p>Over the past two years, we have watched a pattern repeat itself with striking consistency across every deployment we have seen: the AI gets smarter, the platform gets more capable, and the people who actually operate voice AI at scale still spend most of their time clicking through configuration menus.</p>
 <p>We built the menus. We made them better. We added more settings, more toggles, more tabs. Every feature request became another panel in the UI. And for a while, that was the right answer — because the technology was new and operators needed to see and control every moving part.</p>
 <p>That era is ending.</p>
 
-<h2>Who Actually Runs Voice AI</h2>
-<p>The people who run voice AI in production are not power users of builder software. They are operations managers at agencies handling fifty client accounts. They are VPs of customer experience at healthcare companies overseeing thirty agent deployments. They are franchise operators who know their business fluently — the call flows, the escalation paths, the edge cases customers hit at 2 AM — but who have no idea which dropdown controls the transfer behavior for unanswered calls.</p>
-<p>We spent the last year talking to these operators. The numbers are consistent across every deployment we studied. A field deployment engineer building a production-grade voice agent from scratch — prompts, persona, knowledge base, call transfers, test cases, edge-case handling — spends roughly 80 hours before a single call goes live. Call transfer configuration alone takes about 45 minutes per sub-account. A prompt update across a portfolio of 700 agents? There is no button for that.</p>
-<p>This is the real bottleneck in voice AI, and it has nothing to do with the AI model.</p>
+<hr />
 
-<h2>The Thesis</h2>
-<p>The builder UI was a transitional form. Necessary, but transitional — the way the "horseless carriage" was a necessary way to introduce the car, even though it was the wrong frame for understanding what cars would become.</p>
+<p>The people who run voice AI in production are not power users of builder software. They are operations managers at agencies handling fifty client accounts. They are VPs of customer experience at healthcare companies overseeing thirty agent deployments. They are franchise operators who know their business fluently — the call flows, the escalation paths, the edge cases customers hit at 2 AM — but who have no idea which dropdown controls the transfer behavior for unanswered calls.</p>
+<p>We spent the last year talking to these operators. The numbers are consistent across every deployment we studied. A field deployment engineer building a production-grade voice agent from scratch — prompts, persona, knowledge base, call transfers, test cases, edge-case handling — spends roughly 80 hours before a single call goes live. Call transfer configuration alone takes about 45 minutes per sub-account. A prompt update across a portfolio of 700 agents? There is no button for that. You either build a team to do it manually or you accept that your oldest deployments drift out of date.</p>
+<p>This is the real bottleneck in voice AI, and it has nothing to do with the AI model. The models got fast, cheap, and reliable at a pace nobody predicted. What did not keep pace was the configuration layer — the tooling that sits between a human operator and a live deployment.</p>
+
+<hr />
+
+<p>Here is the thesis: the builder UI was a transitional form. Necessary, but transitional — the way the "horseless carriage" was a necessary way to introduce the car, even though it was the wrong frame for understanding what cars would become.</p>
 <p>Every voice AI platform, including ours, has been building increasingly sophisticated GUIs. More settings, more control surfaces, more automation rules you wire up through visual interfaces. And all of it assumes the same thing: that the operator's job is to become fluent in the platform, so the platform can do what the operator already knows.</p>
 <p>That assumption is backwards.</p>
 <p>The operator should describe what they need. The platform should figure out the configuration. The interface should be a conversation, not a control panel.</p>
 
-<h2>What Became Aurora</h2>
-<p>Last year, we shipped four coding paradigms on the same platform — pro-code, low-code, no-code, and generative-AI-assisted. That last one was the signal. The moment we let operators describe agent behavior in plain language and have the system translate it into configuration, two things happened: build times dropped dramatically, and a new class of operator — people who knew the business but not the platform — started building agents that were as good as what our power users produced.</p>
+<hr />
+
+<p>We have been building toward this for longer than we have been talking about it. Last year, we shipped four coding paradigms on the same platform — pro-code, low-code, no-code, and generative-AI-assisted. That last one was the signal. The moment we let operators describe agent behavior in plain language and have the system translate it into configuration, two things happened: build times dropped dramatically, and a new class of operator — people who knew the business but not the platform — started building agents that were as good as what our power users produced.</p>
 <p>That experiment became Aurora.</p>
 <p>Aurora is not a feature we added to Synthflow. It is an AI co-pilot that operates the platform. It sits on top of our full API surface — every agent configuration, every knowledge base, every sub-account, every call routing rule — and it takes natural language instructions and executes them directly, with confirmation before any change is saved.</p>
 <p>Upload a client's operations manual, their FAQ document, a call transcript from their existing system. Aurora reads it and generates a production-ready agent — prompts, persona, knowledge base populated, call transfer logic configured. Not a template. An agent that knows the business. A deployment that used to take days of scoping and configuration now happens in a single session.</p>
-
-<h2>Operating at Scale</h2>
-<p>Building agents was never the hard part at scale. The hard part is operating them.</p>
+<p>But building agents was never the hard part at scale. The hard part is operating them.</p>
 <p>One of our agency partners manages over 700 voice AI agents across hundreds of client locations. When a prompt needs updating — a holiday schedule change, a new product line, a compliance adjustment — there was no path to push that update at scale. It was agent by agent, dropdown by dropdown. With Aurora, the operator describes the change once, reviews a diff of what will be modified, confirms, and the update propagates across every agent that needs it. What used to be a staffing problem becomes a one-minute conversation.</p>
 <p>Another partner runs fifty sub-accounts. Before Aurora, onboarding a new client meant a known overhead: roughly ten configuration emails per client, each triggering manual changes. Now, the operator describes the client's requirements to Aurora in a chat window, reviews the proposed setup, and launches. The operational leverage is not incremental. It changes the unit economics of running a voice AI business.</p>
 
-<h2>Adversarial QA</h2>
-<p>One capability we did not plan but that turned out to matter most: adversarial QA.</p>
-<p>Before Aurora, testing a voice agent meant deploying it and hoping the edge cases were not too painful when real callers found them. Aurora generates adversarial test cases based on the agent's actual configuration — the kinds of questions, objections, and unexpected inputs that will surface in production. It runs simulated calls and flags gaps before a single real call is placed.</p>
-<p>The gap between a demo and a production deployment has always been systematic evaluation. Aurora makes that evaluation automatic and continuous.</p>
+<hr />
 
-<h2>What Happens Next</h2>
-<p>Within six to eight months, we expect the majority of interactions with Synthflow to happen through Aurora rather than through the traditional UI. Not because we are removing the UI — it will always be there for users who want direct control. But because conversation is simply faster for the tasks operators perform every day. Updating a knowledge base. Adjusting call routing. Reviewing agent performance. Onboarding a new client.</p>
+<p>One capability we did not plan but that turned out to matter most: adversarial QA.</p>
+<p>Before Aurora, testing a voice agent meant deploying it and hoping the edge cases were not too painful when real callers found them. Aurora generates adversarial test cases based on the agent's actual configuration — the kinds of questions, objections, and unexpected inputs that will surface in production. It runs simulated calls and flags gaps before a single real call is placed. The gap between a demo and a production deployment has always been systematic evaluation. Aurora makes that evaluation automatic and continuous.</p>
+
+<hr />
+
+<p>Under the hood, Aurora is not generating code or producing templates that an operator then customizes. It directly operates the platform through the same API surface our engineering team uses. Every configuration endpoint, every sub-account management function, every knowledge base operation is accessible to Aurora as a tool. When an operator says "update the after-hours routing for all healthcare agents to route to the new answering service," Aurora identifies the relevant agents, constructs the configuration changes, presents a diff, and applies it on confirmation.</p>
+<p>This architecture matters because it means Aurora's capabilities grow automatically as the platform grows. Every new feature we ship is immediately available through conversation. No separate integration work. No waiting for the co-pilot to "support" a new capability.</p>
+
+<hr />
+
+<p>Here is what we believe happens next.</p>
+<p>Within six to eight months, we expect the majority of interactions with Synthflow to happen through Aurora rather than through the traditional UI. Not because we are removing the UI — it will always be there for users who want direct control. But because conversation is simply faster for the tasks operators perform every day. Updating a knowledge base. Adjusting call routing. Reviewing agent performance. Onboarding a new client. These are workflows where describing what you want will always be faster than navigating to where the setting lives.</p>
 <p>The future of managing a voice AI platform is not a better dashboard. It is a conversation with your platform — one that understands your agents, knows your business, and handles the configuration work so your team can focus on outcomes.</p>
 <p>We built Aurora because the configuration layer was the last bottleneck standing between voice AI and the scale it is capable of. The models are ready. The telephony infrastructure is ready. The compliance certifications are in place. What was missing was a way for operators to work at the speed of their expertise, not the speed of a UI.</p>
 <p>That is what Aurora changes.</p>
+
+<hr />
+
+<p>Aurora is in closed beta with select enterprise customers and agency partners. We are onboarding design partners on a rolling basis — prioritizing teams with meaningful deployment scale where the operational leverage will be most immediate.</p>
+<p>If you are running voice AI at scale and the configuration layer is your constraint, we want to hear from you.</p>
+<p><strong><a href="https://synthflow.ai/aurora">Request early access to Aurora</a></strong></p>
+
+<hr />
+
+<p><em>Synthflow is the leading voice AI platform for enterprise deployments. SOC 2 Type II, HIPAA, GDPR, and ISO 27001 certified. Headquartered in Berlin.</em></p>
 `,
   },
 ];
