@@ -3,9 +3,7 @@ import Link from "next/link";
 import { articles, getArticle } from "@/lib/articles";
 
 export function generateStaticParams() {
-  return articles
-    .filter((a) => a.published)
-    .map((a) => ({ slug: a.slug }));
+  return articles.filter((a) => a.published).map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -22,20 +20,16 @@ export async function generateMetadata({
   };
 }
 
-// Content is hardcoded in our data layer, not user-supplied — safe to render as HTML
+// Content is hardcoded in our data layer — not user-supplied, safe to render
 function ArticleBody({ html }: { html: string }) {
   return (
     <div
-      className="labs-article-body"
+      className="labs-body"
       style={{
-        maxWidth: 720,
-        margin: "0 auto",
-        padding: "0 24px 80px",
-        fontFamily: "var(--font-sans)",
-        fontSize: 18,
-        lineHeight: 1.7,
-        color: "#141414",
-        background: "#fff",
+        fontFamily: "var(--font-body)",
+        fontSize: 17,
+        lineHeight: 1.75,
+        color: "var(--gray-900)",
       }}
       dangerouslySetInnerHTML={{ __html: html }}
     />
@@ -51,42 +45,72 @@ export default async function ArticlePage({
   const article = getArticle(slug);
   if (!article || !article.published) notFound();
 
-  const moreArticles = articles.filter(
-    (a) => a.slug !== slug && a.published
-  );
+  const moreArticles = articles.filter((a) => a.slug !== slug);
 
   return (
     <div>
       {/* Header */}
-      <section
-        style={{
-          padding: "100px 24px 60px",
-          background: "var(--bg-deep)",
-        }}
-      >
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <span
+      <section className="mesh-hero noise relative overflow-hidden">
+        <div
+          style={{
+            maxWidth: 800,
+            margin: "0 auto",
+            padding: "48px 32px 64px",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {/* Nav */}
+          <nav style={{ marginBottom: 48 }}>
+            <Link
+              href="/"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.4)",
+                textDecoration: "none",
+              }}
+            >
+              ← Synthflow Labs
+            </Link>
+          </nav>
+
+          <div
             style={{
               display: "inline-block",
+              padding: "4px 14px",
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(8px)",
               marginBottom: 20,
-              padding: "4px 12px",
-              borderRadius: 999,
-              background: "var(--accent-green-bg)",
-              color: "var(--accent-green)",
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
             }}
           >
-            {article.category}
-          </span>
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: "rgba(255,255,255,0.7)",
+              }}
+            >
+              {article.category}
+            </span>
+          </div>
+
           <h1
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 52,
-              fontWeight: 500,
-              lineHeight: 1.15,
+              fontFamily: "var(--font-body)",
+              fontSize: 44,
+              fontWeight: 700,
+              lineHeight: 1.12,
+              letterSpacing: "-0.03em",
               color: "#fff",
               marginBottom: 16,
             }}
@@ -95,199 +119,258 @@ export default async function ArticlePage({
           </h1>
           <p
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 20,
+              fontFamily: "var(--font-body)",
+              fontSize: 18,
               lineHeight: 1.5,
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.55)",
               marginBottom: 32,
             }}
           >
             {article.subtitle}
           </p>
+
           <div
             style={{
               display: "flex",
-              flexWrap: "wrap",
               alignItems: "center",
-              gap: 16,
-              fontFamily: "var(--font-sans)",
-              fontSize: 14,
-              color: "#595959",
+              gap: 12,
+              paddingTop: 24,
+              borderTop: "1px solid rgba(255,255,255,0.08)",
             }}
           >
-            <span>{article.author}</span>
-            {article.authorRole && (
-              <>
-                <span>·</span>
-                <span>{article.authorRole}</span>
-              </>
-            )}
-            <span>·</span>
-            <span>{article.date}</span>
-            {article.readTime && (
-              <>
-                <span>·</span>
-                <span>{article.readTime}</span>
-              </>
-            )}
+            <div
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                fontWeight: 700,
+                color: "rgba(255,255,255,0.7)",
+              }}
+            >
+              {article.author
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </div>
+            <div>
+              <div
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: "rgba(255,255,255,0.8)",
+                }}
+              >
+                {article.author}
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.35)",
+                }}
+              >
+                {[article.authorRole, article.date, article.readTime]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Key Takeaways */}
-      {article.keyTakeaways.length > 0 && (
+      {/* Content */}
+      <section style={{ background: "var(--white)" }}>
         <div
           style={{
-            maxWidth: 720,
-            margin: "0 auto 48px",
-            padding: "24px 28px",
-            borderLeft: "4px solid var(--accent-purple)",
-            borderRadius: 8,
-            background: "var(--takeaway-bg)",
+            maxWidth: 680,
+            margin: "0 auto",
+            padding: "56px 32px 80px",
           }}
         >
-          <h3
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 16,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              color: "#110229",
-              marginBottom: 12,
-            }}
-          >
-            Key Takeaways
-          </h3>
-          <ul
-            style={{
-              listStyle: "disc",
-              paddingLeft: 20,
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-            }}
-          >
-            {article.keyTakeaways.map((t, i) => (
-              <li
-                key={i}
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: 15,
-                  lineHeight: 1.6,
-                  color: "#110229",
-                }}
-              >
-                {t}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Body */}
-      <ArticleBody html={article.body} />
-
-      {/* More from Labs */}
-      <section
-        style={{
-          padding: "60px 24px 80px",
-          background: "var(--bg-deep)",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 24,
-              fontWeight: 500,
-              color: "#fff",
-              marginBottom: 32,
-            }}
-          >
-            More from Labs
-          </h2>
-          {moreArticles.length > 0 ? (
+          {/* Key Takeaways */}
+          {article.keyTakeaways.length > 0 && (
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                gap: 24,
-                marginBottom: 40,
+                marginBottom: 56,
+                padding: 28,
+                borderRadius: 12,
+                background: "var(--purple-wash)",
+                border: "1px solid rgba(91, 13, 213, 0.08)",
               }}
             >
-              {moreArticles.map((a) => (
-                <Link
-                  key={a.slug}
-                  href={`/${a.slug}`}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginBottom: 16,
+                }}
+              >
+                <div
                   style={{
-                    display: "block",
-                    padding: 20,
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    borderRadius: 16,
-                    background: "var(--bg-card)",
-                    textDecoration: "none",
-                    color: "inherit",
-                    transition: "border-color 0.2s",
+                    width: 3,
+                    height: 18,
+                    borderRadius: 2,
+                    background: "var(--purple-primary)",
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    color: "var(--purple-deep)",
                   }}
                 >
-                  <span
+                  Key Takeaways
+                </span>
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {article.keyTakeaways.map((t, i) => (
+                  <li
+                    key={i}
                     style={{
-                      display: "inline-block",
-                      marginBottom: 12,
-                      padding: "4px 12px",
-                      borderRadius: 999,
-                      background: "var(--accent-green-bg)",
-                      color: "var(--accent-green)",
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 11,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                    }}
-                  >
-                    {a.category}
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: 18,
-                      fontWeight: 500,
-                      lineHeight: 1.3,
-                      color: "#fff",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {a.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
+                      position: "relative",
+                      paddingLeft: 16,
+                      marginBottom: i < article.keyTakeaways.length - 1 ? 14 : 0,
+                      fontFamily: "var(--font-body)",
                       fontSize: 14,
-                      lineHeight: 1.5,
-                      color: "rgba(255,255,255,0.7)",
+                      lineHeight: 1.6,
+                      color: "var(--gray-900)",
                     }}
                   >
-                    {a.subtitle}
-                  </p>
-                </Link>
-              ))}
+                    <span
+                      style={{
+                        position: "absolute",
+                        left: 0,
+                        top: 8,
+                        width: 5,
+                        height: 5,
+                        borderRadius: "50%",
+                        background: "var(--purple-accent)",
+                      }}
+                    />
+                    {t}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ) : (
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>
-              More research coming soon.
-            </p>
           )}
-          <Link
-            href="/"
+
+          {/* Body */}
+          <ArticleBody html={article.body} />
+        </div>
+      </section>
+
+      {/* More from Labs */}
+      <section className="dot-grid" style={{ background: "var(--purple-wash)" }}>
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            padding: "56px 32px 64px",
+          }}
+        >
+          <div
             style={{
-              color: "var(--accent-purple-light)",
-              fontFamily: "var(--font-mono)",
-              fontSize: 14,
-              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 28,
             }}
           >
-            View all research →
-          </Link>
+            <h2
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 22,
+                fontWeight: 700,
+                color: "var(--purple-deep)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              More from Labs
+            </h2>
+            <Link
+              href="/"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--purple-primary)",
+                textDecoration: "none",
+                letterSpacing: "0.04em",
+              }}
+            >
+              View all →
+            </Link>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: 16,
+            }}
+          >
+            {moreArticles.map((a) => (
+              <div
+                key={a.slug}
+                className="lab-card"
+                style={{
+                  padding: 24,
+                  background: "var(--white)",
+                  borderRadius: 12,
+                  border: a.published
+                    ? "1px solid var(--gray-200)"
+                    : "1px dashed var(--gray-200)",
+                  opacity: a.published ? 1 : 0.5,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    color: "var(--purple-primary)",
+                  }}
+                >
+                  {a.category}
+                </span>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    lineHeight: 1.3,
+                    color: "var(--purple-deep)",
+                    margin: "10px 0 6px",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {a.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 13,
+                    lineHeight: 1.5,
+                    color: "var(--gray-600)",
+                  }}
+                >
+                  {a.subtitle}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

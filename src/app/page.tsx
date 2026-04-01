@@ -13,208 +13,421 @@ export default function LabsIndex() {
       : articles.filter((a) => a.category === activeFilter);
 
   return (
-    <div style={{ background: "var(--bg-deep)" }}>
+    <div>
       {/* Hero */}
-      <section
-        style={{ padding: "120px 24px 80px" }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
-          <h1
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 52,
-              fontWeight: 700,
-              lineHeight: 1.1,
-              color: "#fff",
-              marginBottom: 24,
-            }}
-          >
-            Synthflow Labs
-          </h1>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: 20,
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.7)",
-              maxWidth: 640,
-              margin: "0 auto",
-            }}
-          >
-            Research and engineering from the team building voice AI
-            infrastructure
-          </p>
-        </div>
-      </section>
-
-      {/* Filter Bar */}
-      <div
-        style={{
-          display: "flex",
-          padding: "48px 24px",
-          justifyContent: "center",
-          flexWrap: "wrap" as const,
-          gap: 12,
-        }}
-      >
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveFilter(cat)}
-            style={{
-              padding: "8px 20px",
-              border:
-                activeFilter === cat
-                  ? "1px solid rgba(255,255,255,0.3)"
-                  : "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 999,
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              textTransform: "uppercase" as const,
-              letterSpacing: "0.05em",
-              color:
-                activeFilter === cat ? "#fff" : "rgba(255,255,255,0.7)",
-              background:
-                activeFilter === cat
-                  ? "rgba(255,255,255,0.05)"
-                  : "transparent",
-              cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Card Grid */}
-      <section style={{ padding: "0 24px 80px" }}>
+      <section className="mesh-hero noise relative overflow-hidden">
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-            gap: 24,
-            maxWidth: 1200,
+            maxWidth: 1100,
             margin: "0 auto",
+            padding: "80px 32px 72px",
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          {filtered.map((article) => {
-            const inner = (
-              <div style={{ padding: 20 }}>
-                <span
+          {/* Nav */}
+          <nav
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 64,
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase" as const,
+                  color: "rgba(255,255,255,0.5)",
+                }}
+              >
+                Synthflow
+              </span>
+              <span
+                style={{
+                  width: 1,
+                  height: 16,
+                  background: "rgba(255,255,255,0.2)",
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase" as const,
+                  color: "#fff",
+                }}
+              >
+                Labs
+              </span>
+            </div>
+            <a
+              href="https://synthflow.ai"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 13,
+                color: "rgba(255,255,255,0.4)",
+                textDecoration: "none",
+              }}
+            >
+              synthflow.ai ↗
+            </a>
+          </nav>
+
+          {/* Hero content */}
+          <div style={{ maxWidth: 680 }}>
+            <h1
+              className="fade-up"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 48,
+                fontWeight: 700,
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                color: "#fff",
+                marginBottom: 20,
+              }}
+            >
+              Research &<br />Engineering
+            </h1>
+            <p
+              className="fade-up"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 18,
+                lineHeight: 1.6,
+                color: "rgba(255,255,255,0.6)",
+                maxWidth: 520,
+                animationDelay: "0.1s",
+              }}
+            >
+              Independent benchmarks, engineering deep dives, and data-driven
+              analysis from the team building enterprise voice AI.
+            </p>
+          </div>
+
+          {/* Stats bar */}
+          <div
+            className="fade-up"
+            style={{
+              display: "flex",
+              gap: 48,
+              marginTop: 48,
+              paddingTop: 32,
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              animationDelay: "0.2s",
+            }}
+          >
+            {[
+              { label: "p50 TTFT", value: "390ms" },
+              { label: "Languages", value: "30+" },
+              { label: "Uptime", value: "99.99%" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div
                   style={{
-                    display: "inline-block",
-                    marginBottom: 12,
-                    padding: "4px 12px",
-                    borderRadius: 999,
-                    background: "var(--accent-green-bg)",
-                    color: "var(--accent-green)",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 28,
+                    fontWeight: 700,
+                    color: "#fff",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 11,
                     textTransform: "uppercase" as const,
                     letterSpacing: "0.08em",
+                    color: "rgba(255,255,255,0.35)",
+                    marginTop: 4,
                   }}
                 >
-                  {article.category}
-                </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: 18,
-                    fontWeight: 500,
-                    lineHeight: 1.3,
-                    color: "#fff",
-                    marginBottom: 8,
-                  }}
-                >
-                  {article.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                    color: "rgba(255,255,255,0.7)",
-                    marginBottom: 16,
-                  }}
-                >
-                  {article.subtitle}
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    fontFamily: "var(--font-sans)",
-                    fontSize: 12,
-                    color: "#595959",
-                  }}
-                >
-                  <span>{article.author}</span>
-                  {article.authorRole && (
-                    <>
-                      <span>·</span>
-                      <span>{article.authorRole}</span>
-                    </>
-                  )}
-                  <span>·</span>
-                  <span>{article.date}</span>
-                  {article.readTime && (
-                    <>
-                      <span>·</span>
-                      <span>{article.readTime}</span>
-                    </>
-                  )}
+                  {stat.label}
                 </div>
               </div>
-            );
-
-            if (article.published) {
-              return (
-                <Link
-                  key={article.slug}
-                  href={`/${article.slug}`}
-                  style={{
-                    display: "block",
-                    overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    borderRadius: 16,
-                    background: "var(--bg-card)",
-                    transition: "border-color 0.2s",
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.25)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.1)")
-                  }
-                >
-                  {inner}
-                </Link>
-              );
-            }
-
-            return (
-              <div
-                key={article.slug}
-                style={{
-                  overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  borderRadius: 16,
-                  background: "var(--bg-card)",
-                  opacity: 0.5,
-                }}
-              >
-                {inner}
-              </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Filter + Cards */}
+      <section className="dot-grid" style={{ background: "var(--purple-wash)" }}>
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            padding: "48px 32px 80px",
+          }}
+        >
+          {/* Filters */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 40,
+              flexWrap: "wrap" as const,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                textTransform: "uppercase" as const,
+                letterSpacing: "0.08em",
+                color: "var(--gray-400)",
+                marginRight: 8,
+              }}
+            >
+              Filter
+            </span>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                style={{
+                  padding: "6px 16px",
+                  borderRadius: 8,
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  border:
+                    activeFilter === cat
+                      ? "1px solid var(--purple-primary)"
+                      : "1px solid var(--gray-200)",
+                  background:
+                    activeFilter === cat ? "var(--purple-deep)" : "var(--white)",
+                  color: activeFilter === cat ? "#fff" : "var(--gray-600)",
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Cards */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+              gap: 20,
+            }}
+          >
+            {filtered.map((article, i) => {
+              const inner = (
+                <div style={{ padding: 28 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      marginBottom: 16,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 11,
+                        fontWeight: 600,
+                        textTransform: "uppercase" as const,
+                        letterSpacing: "0.06em",
+                        color: "var(--purple-primary)",
+                      }}
+                    >
+                      {article.category}
+                    </span>
+                    <span
+                      style={{
+                        width: 4,
+                        height: 4,
+                        borderRadius: "50%",
+                        background: "var(--gray-200)",
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 12,
+                        color: "var(--gray-400)",
+                      }}
+                    >
+                      {article.date}
+                    </span>
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 20,
+                      fontWeight: 700,
+                      lineHeight: 1.3,
+                      color: "var(--purple-deep)",
+                      marginBottom: 10,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {article.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 14,
+                      lineHeight: 1.6,
+                      color: "var(--gray-600)",
+                      marginBottom: 20,
+                    }}
+                  >
+                    {article.subtitle}
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        background: "var(--purple-light)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        color: "var(--purple-primary)",
+                      }}
+                    >
+                      {article.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 13,
+                        fontWeight: 500,
+                        color: "var(--gray-900)",
+                      }}
+                    >
+                      {article.author}
+                    </span>
+                    {article.readTime && (
+                      <span
+                        style={{
+                          fontFamily: "var(--font-body)",
+                          fontSize: 12,
+                          color: "var(--gray-400)",
+                          marginLeft: "auto",
+                        }}
+                      >
+                        {article.readTime}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+
+              if (article.published) {
+                return (
+                  <Link
+                    key={article.slug}
+                    href={`/${article.slug}`}
+                    className="lab-card fade-up"
+                    style={{
+                      display: "block",
+                      background: "var(--white)",
+                      borderRadius: 16,
+                      border: "1px solid var(--gray-200)",
+                      textDecoration: "none",
+                      color: "inherit",
+                      overflow: "hidden",
+                      animationDelay: `${i * 0.08}s`,
+                    }}
+                  >
+                    {inner}
+                  </Link>
+                );
+              }
+
+              return (
+                <div
+                  key={article.slug}
+                  className="fade-up"
+                  style={{
+                    background: "var(--white)",
+                    borderRadius: 16,
+                    border: "1px dashed var(--gray-200)",
+                    opacity: 0.55,
+                    animationDelay: `${i * 0.08}s`,
+                  }}
+                >
+                  {inner}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer
+        style={{
+          borderTop: "1px solid var(--gray-100)",
+          padding: "32px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: "var(--gray-400)",
+            }}
+          >
+            Synthflow Labs
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              color: "var(--gray-400)",
+            }}
+          >
+            Part of{" "}
+            <a
+              href="https://synthflow.ai"
+              style={{ color: "var(--purple-primary)", textDecoration: "none" }}
+            >
+              Synthflow AI
+            </a>
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
