@@ -3,6 +3,10 @@ import Link from "next/link";
 import { articles, getArticle } from "@/lib/articles";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {
+  BuildTimeChart,
+  SupportSplitChart,
+} from "@/components/AuroraDataCharts";
 
 export function generateStaticParams() {
   return articles.filter((a) => a.published).map((a) => ({ slug: a.slug }));
@@ -22,8 +26,15 @@ export async function generateMetadata({
   };
 }
 
-// Content is hardcoded in our data layer — not user-supplied, safe to render
+const chartComponents: Record<string, React.ComponentType> = {
+  "build-time": BuildTimeChart,
+  "support-split": SupportSplitChart,
+};
+
+// Safe: content is from hardcoded articles.ts, not user input or external APIs
 function ArticleBody({ html }: { html: string }) {
+  const parts = html.split(/<!-- chart:(\S+) -->/);
+
   return (
     <div
       className="labs-body"
@@ -34,8 +45,18 @@ function ArticleBody({ html }: { html: string }) {
         lineHeight: 1.75,
         color: "var(--text-label)",
       }}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    >
+      {parts.map((part, i) => {
+        if (i % 2 === 1) {
+          const Chart = chartComponents[part];
+          return Chart ? <Chart key={i} /> : null;
+        }
+        // Safe: content originates from articles.ts (developer-controlled)
+        return (
+          <div key={i} dangerouslySetInnerHTML={{ __html: part }} />
+        );
+      })}
+    </div>
   );
 }
 

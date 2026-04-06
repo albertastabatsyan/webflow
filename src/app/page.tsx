@@ -9,10 +9,11 @@ import Footer from "@/components/Footer";
 export default function LabsIndex() {
   const [activeFilter, setActiveFilter] = useState("All");
 
+  const published = articles.filter((a) => a.published);
   const filtered =
     activeFilter === "All"
-      ? articles
-      : articles.filter((a) => a.category === activeFilter);
+      ? published
+      : published.filter((a) => a.category === activeFilter);
 
   return (
     <div>
