@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -135,6 +136,60 @@ body {
   color: var(--navy-dark);
   background: var(--light-bg);
   border-bottom: none;
+}
+
+/* ── Legacy brand scope ── */
+.legacy-brand {
+  --navy-dark: #141414;
+  --navy-deep: #10081D;
+  --light-bg: #F9F9F9;
+  --white: #ffffff;
+  --border: #E4E4E7;
+  --text-secondary: #6B7B94;
+  --text-label: #595959;
+  --accent: #5B0DD5;
+  --accent-hover: #9747FF;
+  --text-light: #F9F9F9;
+  --text-light-highlight: #FFFFFF;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Reddit Mono", monospace;
+  --brand-violet: #5B0DD5;
+  --brand-violet-dark: #7130D6;
+  --brand-violet-light: #E8E3FC;
+  --hero-gradient: linear-gradient(180deg, #20103C 0%, #1A0939 100%);
+  --footer-top: #10081D;
+  --footer-bottom: #0A0512;
+  --card-border: #E4E4E7;
+  --border-purple: #E3DFF2;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow-color: #5B0DD5;
+}
+
+.legacy-brand .labs-body th {
+  background: #5B0DD5;
+}
+
+.legacy-brand .labs-body tr:last-child td {
+  color: #141414;
+  background: #FAF9FE;
+}
+
+.legacy-brand .labs-body li::before {
+  background: #5B0DD5;
+}
+
+.legacy-brand .labs-body a {
+  color: #5B0DD5;
+}
+
+.legacy-brand .lab-card:hover {
+  box-shadow: 0 12px 40px rgba(91, 13, 213, 0.1);
+}
+
+::selection {
+  background: var(--accent, #1A1A2E);
+  color: white;
 }
 
 /* Card hover */
